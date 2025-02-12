@@ -38,7 +38,8 @@ label:hover .yes_button {
   border-radius: 50%;
   background: #00c1fc;
   opacity: 0;
-  transition: all 0.3s;
+  transition: all 0.1s;
+  will-change: transform, opacity; 
 }
 
 .yes_tick {
@@ -198,14 +199,10 @@ label:hover .yes_spots {
 
 .no_button {
   position: absolute;
-  left: 30%;
-  bottom: 10%;
   width: 200px;
-  height: 50px;
-  border: 2px solid black;
-  border-radius: 2px;
-  color: black;
-  background-color: transparent;
+  height: 52px;
+  color: white;
+  background-color: #222;
   cursor: pointer;
   transition: all 0.3s;
   overflow: hidden;

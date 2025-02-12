@@ -140,7 +140,7 @@ label:hover .yes_button {
       opacity: 0;
     }
     to {
-      transform: translateY(-99px + $i * 2) translateX(-40px);
+      transform: translateY(-90px + $i * 2) translateX(-40px);
       opacity: 0.6;
     }
   }

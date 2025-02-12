@@ -1,4 +1,4 @@
-import "./button.css";
+import "./button.scss";
 
 export default function YesButton() {
   return (
@@ -8,7 +8,7 @@ export default function YesButton() {
         <div className="yes_button">
           <span className="yes_text">Yes</span>
           <i className="yes_tick">✓</i>
-          {[...Array(20)].map((_, i) => (
+          {[...Array(52)].map((_, i) => (
             <div key={i} className="yes_spots"></div>
           ))}
         </div>

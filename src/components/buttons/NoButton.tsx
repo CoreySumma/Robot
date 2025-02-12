@@ -1,4 +1,4 @@
-import "./button.css";
+import "./button.scss";
 
 export default function NoButton() {
   return (

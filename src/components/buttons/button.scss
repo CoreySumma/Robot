@@ -1,0 +1,221 @@
+/* ----------------- Yes Button -------------- */
+
+// TODO figure out why left particle spots are within button 
+
+
+.yes_button {
+  right: 30%;
+  bottom: 10%;
+  background-color: black;
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 2px;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  overflow: visible;
+  font-size: 16px;
+  letter-spacing: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+label:hover .yes_button {
+  background: white;
+  color: #2c3940;
+  box-shadow: 0px 17px 18px -14px rgba(0, 0, 0, 0.08);
+}
+
+.yes_spots {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00c1fc;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.yes_tick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: scale(0);
+  color: #00c1fc;
+  font-size: 22px;
+  transition: all 0.3s;
+}
+
+// Bottom spots
+@for $i from 1 through 20 {
+  .yes_spots:nth-child(#{$i}) {
+    padding: random(3) + 2 + px;
+    left: -25px + ($i * 12);
+    top: 50px;
+    background: hsla(350 + random(399), 57%, 65%, 1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.12);
+  }
+}
+
+// Top spots
+@for $i from 20 through 40 {
+  .yes_spots:nth-child(#{$i}) {
+    padding: random(3) + 2 + px;
+    left: -255px + ($i * 12);
+    top: -12px;
+    background: hsla(350 + random(399), 57%, 65%, 1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.12);
+  }
+}
+
+// Right side spots
+@for $i from 40 through 46 {
+  .yes_spots:nth-child(#{$i}) {
+    padding: random(3) + 2 + px;
+    left: 204px;
+    top: -488px + ($i * 12);
+    background: hsla(350 + random(399), 57%, 65%, 1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.12);
+  }
+}
+
+// Left side spots
+@for $i from 46 through 52 {
+  .yes_spots:nth-child(#{$i}) {
+    padding: random(3) + 2 + px;
+    left: -10px;
+    top: -568px + ($i * 12);
+    background: hsla(350 + random(399), 57%, 65%, 1);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.12);
+  }
+}
+
+// Animations for each spot group
+@for $i from 1 through 20 {
+  @keyframes spot-#{$i} {
+    from {
+      opacity: 0;
+    }
+    to {
+      transform: translateY(30px) translateX(-20px + $i * 2);
+      opacity: 0.6;
+    }
+  }
+}
+
+@for $i from 20 through 40 {
+  @keyframes spot-#{$i} {
+    from {
+      opacity: 0;
+    }
+    to {
+      transform: translateY(-30px) translateX(-50px + $i * 2);
+      opacity: 0.6;
+    }
+  }
+}
+
+@for $i from 40 through 45 {
+  @keyframes spot-#{$i} {
+    from {
+      opacity: 0;
+    }
+    to {
+      transform: translateY(-86px + $i * 2) translateX(40px);
+      opacity: 0.6;
+    }
+  }
+}
+
+@for $i from 46 through 54 {
+  @keyframes spot-#{$i} {
+    from {
+      opacity: 0;
+    }
+    to {
+      transform: translateY(-99px + $i * 2) translateX(-40px);
+      opacity: 0.6;
+    }
+  }
+}
+
+label:hover .yes_spots {
+  @for $i from 1 through 54 {
+    &:nth-child(#{$i}) {
+      animation: spot-#{$i} 0.7s (random(10) / 10 + 0.4) + s linear infinite;
+    }
+  }
+}
+
+@keyframes spots {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx, 20px), var(--ty, 20px))
+      rotate(var(--r, 0deg));
+  }
+}
+
+@keyframes tick {
+  from {
+    transform: scale(0) rotate(-90deg);
+  }
+  to {
+    transform: scale(1) rotate(-90deg);
+  }
+}
+
+/* Add random transformations for each spot */
+.yes_spots:nth-child(1) {
+  --tx: 30px;
+  --ty: -20px;
+  --r: 45deg;
+}
+.yes_spots:nth-child(2) {
+  --tx: -25px;
+  --ty: 25px;
+  --r: 90deg;
+}
+.yes_spots:nth-child(3) {
+  --tx: 15px;
+  --ty: 35px;
+  --r: 180deg;
+}
+
+/* No Button - No animation since we just move it and it's not poss to click */
+
+.no_button {
+  position: absolute;
+  left: 30%;
+  bottom: 10%;
+  width: 200px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 2px;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  overflow: hidden;
+  font-size: 16px;
+  letter-spacing: 0.3rem;
+  font-weight: 500;
+}
+
+.no_button:hover {
+  background: white;
+  color: #2c3940;
+  box-shadow: 0px 17px 18px -14px rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,153 @@
+/* ----------------- Yes Button -------------- */
+
+.yes_button {
+  right: 30%;
+  bottom: 10%;
+  background-color: black; 
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 2px;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  overflow: hidden;
+  font-size: 16px;
+  letter-spacing: 0.3rem;
+  display: flex;         
+  justify-content: center; 
+  align-items: center;  
+  font-weight: 600;
+}
+
+label:hover .yes_button {
+  background: white;
+  color: #2C3940;
+  box-shadow: 0px 17px 18px -14px rgba(0, 0, 0, 0.08);
+}
+
+label:hover .yes_spots {
+  opacity: 0.8;
+  animation: spots 0.7s ease-out infinite;
+}
+
+.yes_spots {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #00C1FC;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.yes_button.clicked {
+  background: transparent;
+  transform: rotate(90deg);
+  width: 50px;
+  border-radius: 100px;
+  transition: all 0.4s cubic-bezier(0.39, 2.01, 0.27, 0.75);
+}
+
+.yes_tick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: scale(0);
+  color: #00C1FC;
+  font-size: 22px;
+  transition: all 0.3s;
+}
+
+/* Animation when checked */
+#yes-button:checked + label .yes_button {
+  background: transparent;
+  transform: rotate(90deg);
+  width: 50px;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px 440px rgba(0,0,0,0);
+  animation: finalbox 0.4s 4.42s cubic-bezier(0.39, 2.01, 0.27, 0.75) forwards;
+}
+
+#yes-button:checked + label .yes_text {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+#yes-button:checked + label .yes_tick {
+  transform: scale(1) rotate(-90deg);
+  animation: tick 0.3s 4.7s forwards;
+}
+
+#yes-button:checked + label .yes_spots {
+  animation: spots 0.7s ease-out forwards;
+}
+
+/* Generate multiple spots with different animations */
+@keyframes spots {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx, 20px), var(--ty, 20px)) rotate(var(--r, 0deg));
+  }
+}
+
+@keyframes tick {
+  from {
+    transform: scale(0) rotate(-90deg);
+  }
+  to {
+    transform: scale(1) rotate(-90deg);
+  }
+}
+
+@keyframes finalbox {
+  from {
+    width: 100px;
+  }
+  to {
+    width: 50px;
+  }
+}
+
+/* Add random transformations for each spot */
+.yes_spots:nth-child(1) { --tx: 30px; --ty: -20px; --r: 45deg; }
+.yes_spots:nth-child(2) { --tx: -25px; --ty: 25px; --r: 90deg; }
+.yes_spots:nth-child(3) { --tx: 15px; --ty: 35px; --r: 180deg; }
+
+/* No Button - No animation since we just move it and it's not poss to click */
+
+.no_button {
+  position: absolute;
+  left: 30%;
+  bottom: 10%;
+  width: 200px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 2px;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  overflow: hidden;
+  font-size: 16px;
+  letter-spacing: 0.3rem;
+  font-weight: 500;
+}
+
+.no_button:hover {
+  background: white;
+  color: #2C3940;
+  box-shadow: 0px 17px 18px -14px rgba(0, 0, 0, 0.08);
+}
+
+

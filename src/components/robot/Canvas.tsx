@@ -1,6 +1,6 @@
 import Spline from "@splinetool/react-spline";
-import YesButton from "../buttons/YesButton";
-import NoButton from "../buttons/NoButton";
+import YesButton from "../Buttons/YesButton";
+import NoButton from "../Buttons/NoButton";
 import Title from "../Title";
 
 export default function SplineRobot() {

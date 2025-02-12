@@ -1,5 +1,5 @@
 import "./App.css";
-import Canvas from "./components/robot/Canvas";
+import Canvas from "./components/Robot/Canvas";
 
 function App() {
   return (

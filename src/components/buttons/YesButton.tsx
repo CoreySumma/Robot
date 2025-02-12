@@ -1,11 +1,21 @@
 import "./button.scss";
 
-
 export default function YesButton() {
-  const portfolio = "https://coreysumma.github.io/portfolioweb/";
-  const handleClick = () => {
-    window.open(portfolio, "_blank");
+
+  const contact = {
+    portfolio: "https://coreysumma.github.io/portfolioweb/",
+    emailAddress: "CoreySumma@gmail.com",
+    emailMessage: "Hello Corey! I would like to hire you!",
   };
+
+  const handleClick = () => {
+    window.open(contact.portfolio, "_blank");
+    setTimeout(() => {
+    window.location.href =
+      `mailto:${contact.emailAddress}?subject=${contact.emailMessage}`;
+    }, 1000);
+  };
+
   return (
     <>
       <div id="yes-button" />
